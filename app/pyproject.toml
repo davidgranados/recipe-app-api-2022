@@ -1,10 +1,14 @@
 [tool.black]
 line-length = 119
+include = '\.pyi?$'
 exclude = '''
 /(
-  migrations,
-  __pycache__,
-  manage.py,
-  settings.py,
+    \.git
+  | \.venv
+  | .*\b(migrations)\b.*
 )/
 '''
+
+[tool.isort]
+# make it compatible with black
+profile = "black"
