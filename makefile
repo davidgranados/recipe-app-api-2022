@@ -29,3 +29,6 @@ lint-isort-fix:
 lint-check:	lint-isort lint-black lint-flake8
 
 lint-fix:	lint-isort-fix lint-black-fix lint-flake8
+
+test:
+	docker-compose run --rm app sh -c "python manage.py test"
