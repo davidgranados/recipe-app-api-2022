@@ -20,6 +20,8 @@ jobs:
           docker-compose run --rm app sh -c "isort --check ."
           docker-compose run --rm app sh -c "black --check ."
           docker-compose run --rm app sh -c "flake8"
+      - name: Wait for db
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db"
       - name: Test
         run: docker-compose run --rm app sh -c "python manage.py test"
 
