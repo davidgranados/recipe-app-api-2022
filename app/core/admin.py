@@ -2,9 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext as _
 
-from core.models import CustomUser, Recipe
+from core.models import CustomUser, Ingredient, Recipe, Tag
 
 admin.site.register(Recipe)
+admin.site.register(Tag)
+admin.site.register(Ingredient)
 
 
 @admin.register(CustomUser)

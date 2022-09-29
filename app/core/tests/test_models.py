@@ -11,6 +11,11 @@ from core import models
 User = get_user_model()
 
 
+def create_user(email="user@example.com", password="test123"):
+    """Create and return a new user."""
+    return User.objects.create_user(email=email, password=password)
+
+
 class ModelTests(TestCase):
     """
     Tests for models.
@@ -107,3 +112,12 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(recipe), title)
+
+    def test_create_tag(self):
+        """
+        Test creating a new tag is successful.
+        """
+        user = create_user()
+        tag = models.Tag.objects.create(user=user, name="Vegan")
+
+        self.assertEqual(tag.name, "Vegan")
